@@ -3,10 +3,9 @@
 <title>FeedMe</title>
 
 <link type="text/css" rel="stylesheet" href="css/layout.css">
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="foundation.css">
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.easing.min.js"></script>
