@@ -1,7 +1,8 @@
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>FeedMe</title>
-
 <link type="text/css" rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/css/foundation.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/js/vendor/modernizr.js"></script>
@@ -55,6 +56,7 @@ $(".dropdown-menu li span").click(function(){
 
 </head>
 <body>
+<<<<<<< Updated upstream
 <style type="text/css">
 #a div {display:inline;}
 </style>
@@ -91,12 +93,15 @@ $(".dropdown-menu li span").click(function(){
  <script>
     $(document).foundation();
  </script>
+=======
+<div class="container">
+>>>>>>> Stashed changes
 <!
 ***********************************************************************************************
 since we have no database right now, just list them one by one
 >	
 <?php
-		$DB_PASSWORD='YOUR PASSWORD';
+		$DB_PASSWORD='1235789zyc';
 		$con = mysql_connect("localhost","root",$DB_PASSWORD);
 		if (!$con)
 		  {
@@ -112,10 +117,6 @@ since we have no database right now, just list them one by one
 		  }
 		mysql_close($con);
 	?>
-
-
-
-
 
 	<div id="portfoliolist">
 		<div class="portfolio logo" data-cat="logo">
@@ -363,5 +364,8 @@ since we have no database right now, just list them one by one
 </div>
 
 
+  <script>
+    $(document).foundation();
+  </script>
 </body>
 </html>
