@@ -1,6 +1,6 @@
 @charset "utf-8";
 body{font-family:Helvetica, Arial, Verdana;background:#efefef url('../img/ticks.png') repeat 0 0;margin:15px 0 0 0;font-size:12px;}
-.container{position:relative;width:960px;margin:0 auto;-webkit-transition:all 1s ease;-moz-transition:all 1s ease;-o-transition:all 1s ease;transition:all 1s ease;	}
+.container{position:relative;width:1650px;margin:0 auto;-webkit-transition:all 1s ease;-moz-transition:all 1s ease;-o-transition:all 1s ease;transition:all 1s ease;	}
 
 /* filters */
 #filters{margin:1%;padding:0;list-style:none;}

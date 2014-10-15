@@ -3,13 +3,13 @@
 <title>FeedMe</title>
 
 <link type="text/css" rel="stylesheet" href="css/layout.css">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="foundation.css">
-
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery.easing.min.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/css/foundation.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/js/vendor/modernizr.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/js/vendor/jquery.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/js/foundation.min.js"></script>
 <script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
+<script type="text/javascript" src="js/jquery.easing.min.js"></script>
+
 <script type="text/javascript">
 $(function(){
 
@@ -44,28 +44,53 @@ $(function(){
 	// Run the show!
 	filterList.init();
 //*********************************************filter text replace
-  $(".dropdown-menu li a").click(function(){
-    $(".btn:first-child").text($(this).text());
+$(".dropdown-menu li span").click(function(){
+     $(".btn:first-child").text($(this).text());
      $(".btn:first-child").val($(this).text());
+     $("ul").hide(1500);
   });
-});	
+});
+
 </script>
+
 </head>
 <body>
+<style type="text/css">
+#a div {display:inline;}
+</style>
 <br></br>
-<div class="container"><div class="btn-group">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-    Location <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="#"><span class="filter" data-filter="app">Upper Campus</span></a></li>
-    <li><a href="#"><span class="filter" data-filter="icon">Middle campus</span></a></li>
-    <li><a href="#"><span class="filter" data-filter="card">Lower campus</span></a></li>
-    <li class="divider"></li>
-    <li><a href="#"><span class="filter active" data-filter="app card icon logo web">All</span></a></li>
-  </ul>
+<div class="container">
+<div id='a'>
+<div class="btn-group">
+<button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button btn dropdown">Location</button>
+<ul id="drop1" data-dropdown-content class="f-dropdown dropdown-menu" aria-hidden="true" tabindex="-1">
+  <li><a href="#"><span class="filter" data-filter="app">Upper Campus</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="icon">Middle campus</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="card">Lower campus</span></a></li>
+</ul>
 </div>
-
+<div class="btn-group" id='a'>
+<button href="#" data-dropdown="drop2" aria-controls="drop2" aria-expanded="false" class="button btn1 dropdown">Type of Food</button><br>
+<ul id="drop2" data-dropdown-content class="f-dropdown dropdown-menu1" aria-hidden="true" tabindex="-1">
+  <li><a href="#"><span class="filter" data-filter="app">Chinese Food</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="icon">Italian Food</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="card">Japanese Food</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="card">American Food</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="card">Indian Food</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="card">Maxican Food</span></a></li>
+</ul>
+ <script>
+    $(".dropdown-menu1 li span").click(function(){
+     $(".btn1:first-child").text($(this).text());
+     $(".btn1:first-child").val($(this).text());
+     $("ul").hide(1500);
+     });
+ </script>
+</div>
+</div>
+ <script>
+    $(document).foundation();
+ </script>
 <!
 ***********************************************************************************************
 since we have no database right now, just list them one by one
