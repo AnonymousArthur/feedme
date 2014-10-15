@@ -17,7 +17,7 @@ $(function(){
 	var filterList = {
 
 		init:function(){
-			// MixItUp plugin
+			// MixItUp plugin asd
 			$('#portfoliolist').mixitup({
 				targetSelector: '.portfolio',
 				filterSelector: '.filter',
