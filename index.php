@@ -53,8 +53,7 @@ $(function(){
 </head>
 <body>
 <br></br>
-<div class="container">
-<div class="btn-group">
+<div class="container"><div class="btn-group">
   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
     Location <span class="caret"></span>
   </button>
@@ -71,10 +70,32 @@ $(function(){
 ***********************************************************************************************
 since we have no database right now, just list them one by one
 >	
+<?php
+		$DB_PASSWORD=
+		$con = mysql_connect("localhost","root",$DB_PASSWORD);
+		if (!$con)
+		  {
+		  die('Could not connect: ' . mysql_error());
+		  }
+		
+		mysql_select_db("fmDB", $con);
+		$result = mysql_query("SELECT * FROM PHOTOS,RESTAURANTS_PHOTOS WHERE RESTAURANT_ID = 1 AND RESTAURANTS_PHOTOS.PHOTO_ID=PHOTOS.PHOTO_ID;");
+		while($row = mysql_fetch_array($result))
+		  {
+		  echo $row['URL'] . " " . $row['INFORMATION'];
+		  echo "<br />";
+		  }
+		mysql_close($con);
+		?>
+
+
+
+
+
 	<div id="portfoliolist">
 		<div class="portfolio logo" data-cat="logo">
 			<div class="portfolio-wrapper">
-				<img src="img/portfolios/logo/5.jpg" alt="" />
+				<img src="pics/Upper Campus/Classic Kebab/Pizza.jpg" alt="" />
 				<div class="label">
 					<div class="label-text"><a class="text-title">Bird Document</a><span class="text-category">Logo</span></div>
 					<div class="label-bg"></div>
