@@ -71,7 +71,7 @@ $(function(){
 since we have no database right now, just list them one by one
 >	
 <?php
-		$DB_PASSWORD=
+		/*$DB_PASSWORD=
 		$con = mysql_connect("localhost","root",$DB_PASSWORD);
 		if (!$con)
 		  {
@@ -85,8 +85,8 @@ since we have no database right now, just list them one by one
 		  echo $row['URL'] . " " . $row['INFORMATION'];
 		  echo "<br />";
 		  }
-		mysql_close($con);
-		?>
+		mysql_close($con);*/
+	?>
 
 
 
@@ -95,7 +95,7 @@ since we have no database right now, just list them one by one
 	<div id="portfoliolist">
 		<div class="portfolio logo" data-cat="logo">
 			<div class="portfolio-wrapper">
-				<img src="pics/Upper Campus/Classic Kebab/Pizza.jpg" alt="" />
+				<img src="img/Classic Kebab/Pizza.jpg" alt="" />
 				<div class="label">
 					<div class="label-text"><a class="text-title">Bird Document</a><span class="text-category">Logo</span></div>
 					<div class="label-bg"></div>
