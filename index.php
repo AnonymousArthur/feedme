@@ -109,9 +109,9 @@ $(".flip").click(function(){
  <script>
     $(document).foundation();
  </script>
-=======
+
 <div class="container">
->>>>>>> Stashed changes
+
 <!
 ***********************************************************************************************
 since we have no database right now, just list them one by one
