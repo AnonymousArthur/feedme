@@ -52,16 +52,32 @@ $(".dropdown-menu li span").click(function(){
   });
 });
 
+$(document).ready(function(){
+$(".flip").click(function(){
+    $(".panel").slideToggle("slow");
+  });
+});
+
 </script>
 
 </head>
 <body>
-<<<<<<< Updated upstream
 <style type="text/css">
 #a div {display:inline;}
 </style>
+
+<div class="panel" align="center">
+<img src="img/food_header.jpg">
+</div>
+
+<div class="flip" align="center">
+<button class="button" >Feed Me Now</button>
+</div>
+
+
 <br></br>
 <div class="container">
+
 <div id='a'>
 <div class="btn-group">
 <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button btn dropdown">Location</button>
@@ -101,7 +117,7 @@ $(".dropdown-menu li span").click(function(){
 since we have no database right now, just list them one by one
 >	
 <?php
-		$DB_PASSWORD='1235789zyc';
+		$DB_PASSWORD='f940418';
 		$con = mysql_connect("localhost","root",$DB_PASSWORD);
 		if (!$con)
 		  {
