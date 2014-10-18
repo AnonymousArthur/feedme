@@ -95,7 +95,7 @@ $(".flip").click(function(){
   <li><a href="#"><span class="filter" data-filter="card">Japanese Food</span></a></li>
   <li><a href="#"><span class="filter" data-filter="card">American Food</span></a></li>
   <li><a href="#"><span class="filter" data-filter="card">Indian Food</span></a></li>
-  <li><a href="#"><span class="filter" data-filter="card">Maxican Food</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="card">Mexican Food</span></a></li>
 </ul>
  <script>
     $(".dropdown-menu1 li span").click(function(){
@@ -122,7 +122,7 @@ since we have no database right now, just list them one by one
 		if (!$con)
 		  {
 		  die('Could not connect: ' . mysql_error());
-		  }
+		  }			
 		
 		mysql_select_db("fmDB", $con);
 		$result = mysql_query("SELECT * FROM PHOTOS,RESTAURANTS_PHOTOS WHERE RESTAURANT_ID = 1 AND RESTAURANTS_PHOTOS.PHOTO_ID=PHOTOS.PHOTO_ID;");
@@ -135,13 +135,25 @@ since we have no database right now, just list them one by one
 	?>
 
 	<div id="portfoliolist">
+
 		<div class="portfolio logo" data-cat="logo">
 			<div class="portfolio-wrapper">
-				<img src="img/Classic Kebab/Pizza.jpg" alt="" />
-				<div class="label">
-					<div class="label-text"><a class="text-title">Bird Document</a><span class="text-category">Logo</span></div>
-					<div class="label-bg"></div>
-				</div>
+				<ul class="tester" data-orbit>
+					<li>
+						<img src="img/Classic Kebab/Pizza.jpg" alt="" />
+						<div class="label">
+							<div class="label-text"><a class="text-title">Bird Document</a><span class="text-category">Logo</span></div>
+							<div class="label-bg"></div>
+						</div>
+					</li>
+					<li class="active">
+						<img src="img/portfolios/app/1.jpg" alt="" />
+						<div class="label">
+							<div class="label-text"><a class="text-title">Visual Infography</a><span class="text-category">APP</span></div>
+							<div class="label-bg"></div>
+						</div>
+					</li>
+				</ul>
 			</div>
 		</div>
 		
@@ -154,7 +166,7 @@ since we have no database right now, just list them one by one
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="portfolio web" data-cat="web">
 			<div class="portfolio-wrapper">
 				<img src="img/portfolios/web/4.jpg" alt="" />
@@ -381,7 +393,17 @@ since we have no database right now, just list them one by one
 
 
   <script>
-    $(document).foundation();
+    $(document).foundation({
+    	orbit: {
+    		timer_speed: 3000,
+    		pause_on_hover: false,
+    		slide_number: false,
+    		bullets: false,
+    		navigation_arrows: false,
+    		animation: 'fade'
+    	}
+    });
   </script>
+
 </body>
 </html>

@@ -50,3 +50,8 @@ body{font-family:Helvetica, Arial, Verdana;background:#efefef url('../img/ticks.
 .clearfix:before,.clearfix:after,.row:before,.row:after{content:'\0020';display:block;overflow:hidden;visibility:hidden;width:0;height:0;}
 .row:after,.clearfix:after{clear:both;}
 .row,.clearfix{zoom:1;}
+
+/* Orbit css */
+.orbit-timer {
+	display:none;
+}
