@@ -66,10 +66,30 @@ $(".flip").click(function(){
 #a div {display:inline;}
 </style>
 
+<nav class="top-bar" data-topbar role="navigation"> 
+  <ul class="title-area"> 
+    <li class="name"> 
+        <h1><a href="#">Feed Me</a></h1> 
+    </li> 
+ 
+    <li class="toggle-topbar menu-icon">
+       <a href="#"><span>Menu</span></a>
+    </li> 
+  </ul> 
+  <section class="top-bar-section"> <!-- Right Nav Section --> 
+    <ul class="right"> 
+      <li class="active">
+        <a href="#">Login</a>
+      </li>
+      <li class="active">
+        <a href="#">Register</a>
+      </li>  
+    </ul>  
+  </section> 
+</nav>
 <div class="panel" align="center">
 <img src="img/food_header.jpg">
 </div>
-
 <div class="flip" align="center">
 <button class="button" >Feed Me Now</button>
 </div>
