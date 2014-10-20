@@ -117,7 +117,7 @@ $(".flip").click(function(){
 since we have no database right now, just list them one by one
 >	
 <?php
-		$DB_PASSWORD='f940418';
+		$DB_PASSWORD='1235789zyc';
 		$con = mysql_connect("localhost","root",$DB_PASSWORD);
 		if (!$con)
 		  {
