@@ -2,9 +2,11 @@
 <html>
 <head>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/css/foundation.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/js/vendor/modernizr.js"></script>
+<link rel="stylesheet" href="css/layout.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/js/vendor/jquery.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/js/foundation.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/js/foundation/foundation.clearing.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/js/vendor/modernizr.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/js/foundation/foundation.orbit.js"></script>
 <script>
 $(document).ready(function(){
@@ -23,14 +25,8 @@ $(document).foundation({
 </head>
 <body>
 <div class="restaurant-container">
-<!--
+
 <ul class="example-orbit" data-orbit>
-  <li>
-    <img src="img/Classic Kebab/Gozleme.jpg" alt="slide 1" />
-    <div class="orbit-caption">
-      Caption One.
-    </div>
-  </li>
   <li class="active">
     <img src="img/Classic Kebab/Kebab.jpg" alt="slide 2" />
     <div class="orbit-caption">
@@ -43,8 +39,16 @@ $(document).foundation({
       Caption Three.
     </div>
   </li>
-</ul>-->
-<ul class="example-orbit-content" data-orbit>
+  <li>
+    <img src="img/Classic Kebab/Gozleme.jpg" alt="slide 1" />
+    <div class="orbit-caption">
+      Caption One.
+    </div>
+  </li>
+
+
+</ul>
+<!--<ul class="example-orbit-content" data-orbit>
   <li data-orbit-slide="headline-1">
     <div>
       <h2>Headline 1</h2>
@@ -64,7 +68,7 @@ $(document).foundation({
     </div>
   </li>
 </ul>
-</div>
+</div>-->
 
 </body>
 </html>

@@ -48,7 +48,7 @@ $(function(){
 $(".dropdown-menu li span").click(function(){
      $(".btn:first-child").text($(this).text());
      $(".btn:first-child").val($(this).text());
-     $("ul").hide(1500);
+     $("ul").hide(0);
   });
 });
 
@@ -400,7 +400,7 @@ since we have no database right now, just list them one by one
     		slide_number: false,
     		bullets: false,
     		navigation_arrows: false,
-    		animation: 'fade'
+    		animation: 'slide'
     	}
     });
   </script>
