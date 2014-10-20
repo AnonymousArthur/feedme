@@ -79,14 +79,37 @@ $(".flip").click(function(){
   <section class="top-bar-section"> <!-- Right Nav Section --> 
     <ul class="right"> 
       <li class="active">
-        <a href="#">Login</a>
+        <a href="#" data-reveal-id= "myModal">Login</a>
+	<div id="myModal" class="reveal-modal small" data-reveal>
+	  <form>
+	    <h3> Sign In </h3>
+            <div class="row">
+              <div class="large-12 columns">
+                <label>Username
+                <input type="text" placeholder="" />
+                </label>
+              </div>
+           </div>
+           <div class="row">
+              <div class="large-12 columns">
+                <label>Password
+                <input type="text" placeholder="" />
+                </label>
+              </div>
+           </div>
+	   <div class="row">
+              <a href="#" class="button small">Sign In</a>
+	   </div>
+          <a class="close-reveal-modal">&#215;</a>
+        </div>
       </li>
       <li class="active">
-        <a href="#">Register</a>
+        <a href="register.html">Register</a>
       </li>  
     </ul>  
   </section> 
 </nav>
+
 <div class="panel" align="center">
 <img src="img/food_header.jpg">
 </div>
