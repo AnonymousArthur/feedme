@@ -98,13 +98,60 @@ $(".flip").click(function(){
               </div>
            </div>
 	   <div class="row">
-              <a href="#" class="button small">Sign In</a>
+              <a href="index.php" class="button small">Sign In</a>
 	   </div>
           <a class="close-reveal-modal">&#215;</a>
         </div>
       </li>
       <li class="active">
-        <a href="register.html">Register</a>
+         <a href="#" data-reveal-id= "myModal2">Register</a>
+        <div id="myModal2" class="reveal-modal small" data-reveal>
+          <form>
+            <h3> Feed Me Registration </h3>
+            <div class="row">
+              <div class="large-6 columns">
+                <label>First Name
+                <input type="text" placeholder="" />
+                </label>
+              </div>
+              <div class="large-6 columns">
+                <label>Last Name
+                <input type="text" placeholder="" />
+                </label>
+              </div>
+           </div>
+           <div class="row">
+              <div class="large-6 columns">
+                <label>Username
+                <input type="text" placeholder="" />
+                </label>
+              </div>
+           </div>
+           <div class="row">
+              <div class="large-6 columns">
+                <label>Password
+                <input type="text" placeholder="" />
+                </label>
+              </div>
+              <div class="large-6 columns">
+                <label>Confirm Password
+                <input type="text" placeholder="" />
+                </label>
+              </div>
+           </div>
+           <div class="row">
+              <div class="large-12 columns">
+                <label>Email Address
+                <input type="text" placeholder="" />
+                </label>
+              </div>
+           </div>
+
+           <div class="row">
+              <a href="index.php" class="button small">Sign Up</a>
+           </div>
+          <a class="close-reveal-modal">&#215;</a>
+        </div>
       </li>  
     </ul>  
   </section> 
@@ -158,7 +205,8 @@ $(".flip").click(function(){
 <!
 ***********************************************************************************************
 since we have no database right now, just list them one by one
->	
+>
+	
 <?php
 		$DB_PASSWORD='1235789zyc';
 		$con = mysql_connect("localhost","root",$DB_PASSWORD);
@@ -177,6 +225,28 @@ since we have no database right now, just list them one by one
 		mysql_close($con);
 	?>
 
+<!--php
+$mysql_host = "mysql3.000webhost.com";
+$mysql_database = "a5454401_fmDB";
+$mysql_user = "a5454401_fmDB";
+$mysql_password = "seng2021";
+
+$DB_PASSWORD=$mysql_password;
+$con = mysql_connect($mysql_host,$mysql_user,$DB_PASSWORD);
+if (!$con)
+{
+die('Could not connect: ' . mysql_error());
+}
+
+mysql_select_db($mysql_database, $con);
+$result = mysql_query("SELECT * FROM PHOTOS,RESTAURANTS_PHOTOS WHERE RESTAURANT_ID = 1 AND RESTAURANTS_PHOTOS.PHOTO_ID=PHOTOS.PHOTO_ID;");
+while($row = mysql_fetch_array($result))
+{
+echo $row['URL'] . " " . $row['INFORMATION'];
+echo "<br />";
+}
+mysql_close($con);
+?>-->
 	<div id="portfoliolist">
 
 		<div class="portfolio logo" data-cat="logo">
