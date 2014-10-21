@@ -89,31 +89,23 @@ $(".flip").click(function(){
 
 <div class="container">
 
-<div id='a'>
-<div class="btn-group">
-<button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button btn dropdown">Location</button>
-<ul id="drop1" data-dropdown-content class="f-dropdown dropdown-menu" aria-hidden="true" tabindex="-1">
-  <li><a href="#"><span class="filter" data-filter="app">Upper Campus</span></a></li>
-  <li><a href="#"><span class="filter" data-filter="icon">Middle campus</span></a></li>
-  <li><a href="#"><span class="filter" data-filter="card">Lower campus</span></a></li>
-</ul>
-</div>
-<div class="btn-group" id='a'>
-<button href="#" data-dropdown="drop2" aria-controls="drop2" aria-expanded="false" class="button btn1 dropdown">Type of Food</button><br>
-<ul id="drop2" data-dropdown-content class="f-dropdown dropdown-menu1" aria-hidden="true" tabindex="-1">
-  <li><a href="#"><span class="filter" data-filter="app1">Chinese Food</span></a></li>
-  <li><a href="#"><span class="filter" data-filter="icon">Italian Food</span></a></li>
-  <li><a href="#"><span class="filter" data-filter="card">Japanese Food</span></a></li>
-  <li><a href="#"><span class="filter" data-filter="card">American Food</span></a></li>
-  <li><a href="#"><span class="filter" data-filter="card">Indian Food</span></a></li>
-  <li><a href="#"><span class="filter" data-filter="card">Mexican Food</span></a></li>
-</ul>
- <script>
-    $(".dropdown-menu1 li span").click(function(){
-     $(".btn1:first-child").text($(this).text());
-     $(".btn1:first-child").val($(this).text());
-     $("ul").hide(1500);
-     });
+	<ul id="filters" class="clearfix">
+  <li><span class="filter active" data-filter="Chinese_Food Italian_Food Japanese_Food American_Food Indian_Food Malaysian_Food Desserts Vegetarian Miscellaneous Drinks Turkish_Food Fast_Food Coffee_shop Mediterranean_Food">All</span></li>
+  <li><a href="#"><span class="filter" data-filter="Chinese_Food">Chinese Food</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="Italian_Food">Italian Food</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="Japanese_Food">Japanese Food</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="American_Food">American Food</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="Indian_Food">Indian Food</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="Malaysian_Food">Malaysian Food</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="Desserts">Desserts</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="Vegetarian">Vegetarian</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="Miscellaneous">Miscellaneous</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="Drinks">Drinks</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="Turkish_Food">Turkish Food</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="Fast_Food">Fast Food</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="Coffee_shop">Coffee shop</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="Mediterranean_Food">Mediterranean Food</span></a></li>
+	</ul>
  </script>
 </div>
 </div>
@@ -124,20 +116,44 @@ $(".flip").click(function(){
 
 
 <?php
-		$DB_PASSWORD='1235789zyc';
+		$DB_PASSWORD='f940418';
 		$con = mysql_connect("localhost","root",$DB_PASSWORD);
 		if (!$con)
 		  {
 		  die('Could not connect: ' . mysql_error());
 		  }
-		
+		$i = 1;
 		mysql_select_db("fmDB", $con);
-		$result = mysql_query("SELECT * FROM PHOTOS,RESTAURANTS_PHOTOS WHERE RESTAURANT_ID = 1 AND RESTAURANTS_PHOTOS.PHOTO_ID=PHOTOS.PHOTO_ID;");
-		while($row = mysql_fetch_array($result))
-		  {
-		  //echo $row['URL'] . " " . $row['INFORMATION'];
-		  //echo "<br />";
-		  }
+		//ONE FILTER*****************************************************************
+		echo "<div id='portfoliolist'>";
+		while($i<=14){
+			$result = mysql_query("SELECT * FROM PHOTOS,RESTAURANTS_PHOTOS WHERE RESTAURANT_ID = $i AND 				RESTAURANTS_PHOTOS.PHOTO_ID=PHOTOS.PHOTO_ID;");
+			$restaurant_types = mysql_query("SELECT * FROM RESTAURANTS,RESTAURANTS_PREFERENCES,PREFERENCES WHERE RESTAURANTS.RESTAURANT_ID = $i AND RESTAURANTS_PREFERENCES.PREFERENCE_ID = PREFERENCES.PREFERENCE_ID AND RESTAURANTS_PREFERENCES.RESTAURANT_ID = RESTAURANTS.RESTAURANT_ID;");
+			$restaurant = mysql_fetch_array($restaurant_types);
+				//echo $restaurant['PREFERENCE'];
+			$newphrase = str_replace(" ", "_", $restaurant['PREFERENCE']);
+			///one block********************************************************************
+			echo "<div class='portfolio ",$newphrase,"' data-cat = \"",$newphrase,"\">";
+			echo "<div class='portfolio-wrapper'>";
+			echo "<ul class='tester' data-orbit>";
+			while($row = mysql_fetch_array($result)){
+				echo "<li><img src='",$row['URL'],"' alt='' height=\"300\" width=\"400\"/>";
+				echo "<div class='label'>";
+				echo "<div class='label-text'><a class='text-title'></a><span class='text
+                                       -category'>",$restaurant['RESTAURANT_NAME'],"</span></div>";
+				echo "<div class='label-bg'></div></div></li>";
+
+		  	//echo $row['URL'] . " " . $row['INFORMATION'];
+			//echo "***********";
+			}
+			echo "</ul>";
+			echo "</div>";
+			echo "</div>";
+			//****************************************************************************
+			$i = $i+1;
+		}
+		echo "</div>";
+                //*****************************************************************************************
 		mysql_close($con);
 	?>
 <br/><br/>
