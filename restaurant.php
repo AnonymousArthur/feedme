@@ -14,7 +14,7 @@
 	$restaurant_ID = $_GET['restaurant'];
 	$photo_ID = $_GET['photo'];
 	
-	$DB_PASSWORD='f940418';
+	$DB_PASSWORD='1235789zyc';
 	$con = mysql_connect("localhost","root",$DB_PASSWORD);
 	if (!$con)
 	  {
@@ -44,7 +44,7 @@
 					while($row = mysql_fetch_array($result))
 					 {
 			            echo "<a href='",$row['URL'],"' title=",$row['INFORMATION'],"><img src='",$row['URL'],"' height='500px'/></a>";        
-					}    
+					}
 			 ?>
 		</div>
 	</div>
