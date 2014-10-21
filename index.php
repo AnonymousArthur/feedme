@@ -114,9 +114,9 @@ $(".flip").click(function(){
  </script>
 
 
-
+<div id="myModal" class="reveal-modal" data-reveal></div>
 <?php
-		$DB_PASSWORD='f940418';
+		$DB_PASSWORD='1235789zyc';
 		$con = mysql_connect("localhost","root",$DB_PASSWORD);
 		if (!$con)
 		  {
@@ -137,10 +137,9 @@ $(".flip").click(function(){
 			echo "<div class='portfolio-wrapper'>";
 			echo "<ul class='tester' data-orbit>";
 			while($row = mysql_fetch_array($result)){
-				echo "<li><img src='",$row['URL'],"' alt='' height=\"300\" width=\"400\"/>";
+				echo "<li><a  href='restaurant.php?restaurant=$i' data-reveal-id='myModal' data-reveal-ajax='true'><img src='",$row['URL'],"' alt='' height=\"300\" width=\"400\"/></a>";
 				echo "<div class='label'>";
-				echo "<div class='label-text'><a class='text-title'></a><span class='text
-                                       -category'>",$restaurant['RESTAURANT_NAME'],"</span></div>";
+				echo "<div class='label-text'><span class='text-title'>",$restaurant['RESTAURANT_NAME'],"</span></div>";
 				echo "<div class='label-bg'></div></div></li>";
 
 		  	//echo $row['URL'] . " " . $row['INFORMATION'];
@@ -156,39 +155,6 @@ $(".flip").click(function(){
                 //*****************************************************************************************
 		mysql_close($con);
 	?>
-<br/><br/>
-<div id="myModal" class="reveal-modal" data-reveal></div>
-	<div id="portfoliolist">
-		<div class="portfolio logo" data-cat="logo">		
-   			<div class="portfolio-wrapper full">			
-				<ul class="tester" data-orbit>
-					<li>
-						<img src="img/Classic Kebab/Pizza.jpg" alt="" />
-						<div class="label">
-							<div class="label-text"><a class="text-title">Bird Document</a><span class="text-category">Logo</span></div>
-							<div class="label-bg"></div>
-						</div>
-					</li>
-					<li class="active">
-						<a  href="restaurant.php?restaurant=10" data-reveal-id="myModal" data-reveal-ajax="true"><img src="img/portfolios/app/1.jpg" alt="" /></a>
-						<div class="label">
-							<div class="label-text"><a class="text-title">Visual Infography</a><span class="text-category">APP</span></div>
-							<div class="label-bg"></div>
-
-						</div>
-					</li>
-				</ul>
-			</div>			
-		</div>
-		<div class="portfolio app1" data-cat="app1">
-			<div class="portfolio-wrapper">
-				<a  href="restaurant.php?restaurant=7" data-reveal-id="myModal" data-reveal-ajax="true"><img src="img/portfolios/app/1.jpg" alt="" /></a>
-				<div class="label">
-					<div class="label-text"><a class="text-title">Visual Infography</a><span class="text-category">APP</span></div>
-					<div class="label-bg"></div>
-				</div>
-			</div>
-		</div>
   <script>
     $(document).foundation({
     	orbit: {

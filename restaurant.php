@@ -14,7 +14,7 @@
 	$restaurant_ID = $_GET['restaurant'];
 	$photo_ID = $GET['photo'];
 	
-	$DB_PASSWORD='f940418';
+	$DB_PASSWORD='1235789zyc';
 	$con = mysql_connect("localhost","root",$DB_PASSWORD);
 	if (!$con)
 	  {
