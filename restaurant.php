@@ -5,41 +5,26 @@
 <link rel="stylesheet" href="css/baguettebox.min.css">
 <link rel="stylesheet" href="css/style.css">
 <link href='http://fonts.googleapis.com/css?family=Muli:300,400' rel='stylesheet' type='text/css'>
-<script src="js/baguettebox.min.js"></script>
+<script src="js/baguetteBox.js"></script>
 <style type="text/css">
-.restaurant-container{	
-	width: auto;
-	margin: 0 auto;	
-}
-.restaurant-info{
-	text-align: center;
-	font-family: 'Muli', sans-serif;
-	font-weight: 300;
-	color: white;
-}
-.restaurant-location{
-	color:white;
-}
 </style>
 </head>
 <body>
 <?php
-					$restaurant_ID = $_GET['restaurant'];
-					$photo_ID = $GET['photo'];
-					
-					$DB_PASSWORD='1235789zyc';
-					$con = mysql_connect("localhost","root",$DB_PASSWORD);
-					if (!$con)
-					  {
-					  die('Could not connect: ' . mysql_error());
-					  }			
-					
-					mysql_select_db("fmDB", $con);
-					
-					//For testing
-					$restaurant_ID = 6;
-
-
+	$restaurant_ID = $_GET['restaurant'];
+	$photo_ID = $GET['photo'];
+	
+	$DB_PASSWORD='1235789zyc';
+	$con = mysql_connect("localhost","root",$DB_PASSWORD);
+	if (!$con)
+	  {
+	  die('Could not connect: ' . mysql_error());
+	  }			
+	
+	mysql_select_db("fmDB", $con);
+	
+	//For testing
+	//$restaurant_ID = 6;
 ?>
 <div class="restaurant-container">
 	<div class="restaurant-info">
@@ -64,9 +49,11 @@
 		</div>
 	</div>
 </div>
+<script src="js/baguetteBox.js"></script>
 <script type="text/javascript">
 baguetteBox.run('.baguetteBoxOne', {
-    animation: 'fadeIn',
+    animation: 'slideIn',
+    async: true
 });
 </script>
 <?php
