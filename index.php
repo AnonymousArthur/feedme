@@ -16,9 +16,7 @@
 <link href='http://fonts.googleapis.com/css?family=Muli:300,400' rel='stylesheet' type='text/css'>
 <script type="text/javascript">
 $(function(){
-
 	var filterList = {
-
 		init:function(){
 			// MixItUp plugin asd
 			$('#portfoliolist').mixitup({
@@ -68,11 +66,18 @@ $(".flip").click(function(){
 <style type="text/css">
 #a div {display:inline;}
 </style>
-
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_CN/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <nav class="top-bar" data-topbar role="navigation"> 
   <ul class="title-area"> 
     <li class="name"> 
-        <h1><a href="#">FeedMe</a></h1> 
+        <h1><a href="index.php">FeedMe</a></h1> 
     </li> 
  
     <li class="toggle-topbar menu-icon">
@@ -85,7 +90,7 @@ $(".flip").click(function(){
       <div class="row collapse">
 <!-- Seach button-->
      <form method="get" action="index.php"> 
-     		<div class="large-8 small-9 columns">
+     		<div class="large-8 small-9 columns">    		
       		<input name="search-term" type="text" placeholder="What would you like">
        		</div>
        		<div class="large-4 small-3 columns">
@@ -96,11 +101,14 @@ $(".flip").click(function(){
    </div>
      </li>
     </ul>  
+    <ul class="right">
+  	<li><div class="fb-share-button" data-href="http://feedme.site40.com" data-width="200px"></div></li>  
+  	</ul>
   </section> 
 </nav>
 
 <div class="panel" align="center">
-<img src="patrick.png">
+<img id="intro" src="patrick.png">
 </div>
 <div class="flip" align="center">
 <button class="button" >Feed Me Now</button>
@@ -124,8 +132,6 @@ $(".flip").click(function(){
   <li><a href="#"><span class="filter" data-filter="Coffee_shop">Coffee shop</span></a></li>
   <li><a href="#"><span class="filter" data-filter="Mediterranean_Food">Mediterranean Food</span></a></li>
   <li><a href="#"><span class="filter" data-filter="Vietnamese_Food">Vietnamese Food</span></a></li>
-
-
 	</ul>
  </script>
 </div>

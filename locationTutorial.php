@@ -12,7 +12,7 @@
 <nav class="top-bar" data-topbar role="navigation"> 
   <ul class="title-area"> 
     <li class="name"> 
-        <h1><a href="#">FeedMe</a></h1> 
+        <h1><a href="index.php">FeedMe</a></h1> 
     </li> 
  
     <li class="toggle-topbar menu-icon">
@@ -25,7 +25,7 @@
       <div class="row collapse">
 <!-- Seach button-->
      <form method="get" action="index.php"> 
-     		<div class="large-8 small-9 columns">
+     		<div class="large-8 small-9 columns">    		
       		<input name="search-term" type="text" placeholder="What would you like">
        		</div>
        		<div class="large-4 small-3 columns">
@@ -36,6 +36,9 @@
    </div>
      </li>
     </ul>  
+    <ul class="right">
+  	<li><div class="fb-share-button" data-href="http://feedme.site40.com" data-width="200px"></div></li>  
+  	</ul>
   </section> 
 </nav>
 

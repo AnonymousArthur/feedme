@@ -63,6 +63,8 @@ function getCookie(cname) {
 function checkCookie() {
     var new_visitor=getCookie("new");
     if (new_visitor != "") {
+    	//var img = document.getElementById('intro');
+		//img.style.visibility = 'hidden';
        $(".panel").hide();
     } else {
        new_visitor = 1;
