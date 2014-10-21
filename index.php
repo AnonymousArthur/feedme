@@ -180,7 +180,7 @@ $(".flip").click(function(){
 <div class="btn-group" id='a'>
 <button href="#" data-dropdown="drop2" aria-controls="drop2" aria-expanded="false" class="button btn1 dropdown">Type of Food</button><br>
 <ul id="drop2" data-dropdown-content class="f-dropdown dropdown-menu1" aria-hidden="true" tabindex="-1">
-  <li><a href="#"><span class="filter" data-filter="app">Chinese Food</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="app1">Chinese Food</span></a></li>
   <li><a href="#"><span class="filter" data-filter="icon">Italian Food</span></a></li>
   <li><a href="#"><span class="filter" data-filter="card">Japanese Food</span></a></li>
   <li><a href="#"><span class="filter" data-filter="card">American Food</span></a></li>
@@ -213,7 +213,7 @@ since we have no database right now, just list them one by one
 		if (!$con)
 		  {
 		  die('Could not connect: ' . mysql_error());
-		  }			
+		  }
 		
 		mysql_select_db("fmDB", $con);
 		$result = mysql_query("SELECT * FROM PHOTOS,RESTAURANTS_PHOTOS WHERE RESTAURANT_ID = 1 AND RESTAURANTS_PHOTOS.PHOTO_ID=PHOTOS.PHOTO_ID;");
@@ -270,7 +270,7 @@ mysql_close($con);
 			</div>
 		</div>
 		
-		<div class="portfolio app" data-cat="app">
+		<div class="portfolio app1" data-cat="app1">
 			<div class="portfolio-wrapper">
 				<img src="img/portfolios/app/1.jpg" alt="" />
 				<div class="label">

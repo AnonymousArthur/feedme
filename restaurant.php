@@ -1,74 +1,76 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/css/foundation.css">
-<link rel="stylesheet" href="css/layout.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/js/vendor/jquery.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/js/foundation.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/js/foundation/foundation.clearing.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/js/vendor/modernizr.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/js/foundation/foundation.orbit.js"></script>
-<script>
-$(document).ready(function(){
-$(document).foundation({
-  orbit: {
-    animation: 'slide',
-    timer_speed: 1000,
-    pause_on_hover: true,
-    animation_speed: 500,
-    navigation_arrows: true,
-    bullets: false
-  }
-});
-});
-</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css/baguettebox.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link href='http://fonts.googleapis.com/css?family=Muli:300,400' rel='stylesheet' type='text/css'>
+<script src="js/baguettebox.min.js"></script>
+<style type="text/css">
+.restaurant-container{	
+	width: auto;
+	margin: 0 auto;	
+}
+.restaurant-info{
+	text-align: center;
+	font-family: 'Muli', sans-serif;
+	font-weight: 300;
+	color: white;
+}
+.restaurant-location{
+	color:white;
+}
+</style>
 </head>
 <body>
+<?php
+					$restaurant_ID = $_GET['restaurant'];
+					$photo_ID = $GET['photo'];
+					
+					$DB_PASSWORD='1235789zyc';
+					$con = mysql_connect("localhost","root",$DB_PASSWORD);
+					if (!$con)
+					  {
+					  die('Could not connect: ' . mysql_error());
+					  }			
+					
+					mysql_select_db("fmDB", $con);
+					
+					//For testing
+					$restaurant_ID = 6;
+
+
+?>
 <div class="restaurant-container">
-
-<ul class="example-orbit" data-orbit>
-  <li class="active">
-    <img src="img/Classic Kebab/Kebab.jpg" alt="slide 2" />
-    <div class="orbit-caption">
-      Caption Two.
-    </div>
-  </li>
-  <li>
-    <img src="img/Classic Kebab/Pizza.jpg" alt="slide 3" />
-    <div class="orbit-caption">
-      Caption Three.
-    </div>
-  </li>
-  <li>
-    <img src="img/Classic Kebab/Gozleme.jpg" alt="slide 1" />
-    <div class="orbit-caption">
-      Caption One.
-    </div>
-  </li>
-
-
-</ul>
-<!--<ul class="example-orbit-content" data-orbit>
-  <li data-orbit-slide="headline-1">
-    <div>
-      <h2>Headline 1</h2>
-      <h3>Subheadline</h3>
-    </div>
-  </li>
-  <li data-orbit-slide="headline-2">
-    <div>
-      <h2>Headline 2</h2>
-      <h3>Subheadline</h3>
-    </div>
-  </li>
-  <li data-orbit-slide="headline-3">
-    <div>
-      <h2>Headline 3</h2>
-      <h3>Subheadline</h3>
-    </div>
-  </li>
-</ul>
-</div>-->
-
+	<div class="restaurant-info">
+	<?php
+		$restaurant_query = mysql_query("SELECT * FROM RESTAURANTS WHERE RESTAURANT_ID = $restaurant_ID;");
+		while($restaurant = mysql_fetch_array($restaurant_query)){
+			echo "<h1>",$restaurant["RESTAURANT_NAME"],"</h1>";
+			echo "<p class='restaurant-location'><a class='restaurant-location' href='findLocation.html'>",$restaurant["LOCATION"],"</a><p>";
+			echo "<p class='restaurant-trade-time'>",$restaurant["OPENING_HOUR"],"<p>";
+		}
+	?>	
+	</div>
+	<div class="photo-detail-container">
+		<div class="baguetteBoxOne gallery">
+			<?php	
+					$result = mysql_query("SELECT * FROM PHOTOS,RESTAURANTS_PHOTOS WHERE RESTAURANT_ID = $restaurant_ID AND RESTAURANTS_PHOTOS.PHOTO_ID=PHOTOS.PHOTO_ID;");
+					while($row = mysql_fetch_array($result))
+					 {
+			            echo "<a href='",$row['URL'],"' title=",$row['INFORMATION'],"><img src='",$row['URL'],"' height='500px'/></a>";        
+					}    
+			 ?>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+baguetteBox.run('.baguetteBoxOne', {
+    animation: 'fadeIn',
+});
+</script>
+<?php
+	mysql_close();
+?>
 </body>
 </html>
