@@ -72,13 +72,27 @@ $(".flip").click(function(){
 <nav class="top-bar" data-topbar role="navigation"> 
   <ul class="title-area"> 
     <li class="name"> 
-        <h1><a href="#">Feed Me</a></h1> 
+        <h1><a href="#">FeedMe</a></h1> 
     </li> 
  
     <li class="toggle-topbar menu-icon">
        <a href="#"><span>Menu</span></a>
     </li> 
   </ul> 
+  <section class="top-bar-section"> <!-- Right Nav Section --> 
+    <ul class="right"> 
+      <li class="has-form">
+      <div class="row collapse">	
+     <div class="large-8 small-9 columns">
+      <input name="search-term" type="text" placeholder="Enter Keyword">
+       </div>
+       <div class="large-4 small-3 columns">
+         <a href="#" class=" filter alert button expand" data-filter=search-term>Search</a>
+       </div>  
+   </div>
+     </li>
+    </ul>  
+  </section> 
 </nav>
 
 <div class="panel" align="center">
@@ -119,7 +133,7 @@ $(".flip").click(function(){
 <div id="myModal" class="reveal-modal" data-reveal></div>
 <?php
 		$DB_PASSWORD='1235789zyc';
-		$con = mysql_connect("localhost","root",$DB_PASSWORD);
+		$con = mysql_connect("localhost","root",$DB_PASSWORD;
 		if (!$con)
 		  {
 		  die('Could not connect: ' . mysql_error());
