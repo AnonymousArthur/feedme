@@ -6,7 +6,7 @@ body{font-family: 'Muli', sans-serif;font-weight: 300;background:#efefef url('..
 #filters{margin:1%;padding:0;list-style:none;}
 #filters li{float:left;}
 #filters li span{display:block;padding:5px 20px;text-decoration:none;color:#666;cursor:pointer;}
-#filters li span.active{background:#e95a44;color:#fff;}
+#filters li span.active{background:#008cba;color:#fff;}
 #portfoliolist .portfolio{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-o-box-sizing:border-box;width:23%;*width:22%;margin:1%;display:none;float:left;overflow:hidden;}
 .portfolio-wrapper{width:250px;height:250px;overflow:hidden;position:relative!important;background:#666;cursor:pointer;}
 .portfolio img{width:250px;height:250px;position:relative;}
@@ -67,3 +67,6 @@ body{font-family: 'Muli', sans-serif;font-weight: 300;background:#efefef url('..
 	min-height:90%;
 }
 
+.portfolio{
+	border: 0px solid #466d98;
+}
