@@ -93,7 +93,7 @@ $(".flip").click(function(){
            <div class="row">
               <div class="large-12 columns">
                 <label>Password
-                <input type="text" placeholder="" />
+                <input type="password" placeholder="" />
                 </label>
               </div>
            </div>
@@ -130,12 +130,12 @@ $(".flip").click(function(){
            <div class="row">
               <div class="large-6 columns">
                 <label>Password
-                <input type="text" placeholder="" />
+                <input type="password" placeholder="" />
                 </label>
               </div>
               <div class="large-6 columns">
                 <label>Confirm Password
-                <input type="text" placeholder="" />
+                <input type="password" placeholder="" />
                 </label>
               </div>
            </div>
