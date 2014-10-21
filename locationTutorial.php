@@ -12,7 +12,7 @@
 <nav class="top-bar" data-topbar role="navigation"> 
   <ul class="title-area"> 
     <li class="name"> 
-        <h1><a href="index.php">FeedMe</a></h1> 
+        <h1><a href="#">FeedMe</a></h1> 
     </li> 
  
     <li class="toggle-topbar menu-icon">
@@ -22,13 +22,17 @@
   <section class="top-bar-section"> <!-- Right Nav Section --> 
     <ul class="right"> 
       <li class="has-form">
-      <div class="row collapse">	
-     <div class="large-8 small-9 columns">
-      <input name="search-term" type="text" placeholder="Enter Keyword">
-       </div>
-       <div class="large-4 small-3 columns">
-         <a href="#" class=" filter alert button expand" data-filter=search-term>Search</a>
-       </div>  
+      <div class="row collapse">
+<!-- Seach button-->
+     <form method="get" action="index.php"> 
+     		<div class="large-8 small-9 columns">
+      		<input name="search-term" type="text" placeholder="What would you like">
+       		</div>
+       		<div class="large-4 small-3 columns">
+         	<input type="submit"  class="alert button expand" placeholder="Feed me">
+       		</div>
+       </form>  
+<!-- ------------>
    </div>
      </li>
     </ul>  

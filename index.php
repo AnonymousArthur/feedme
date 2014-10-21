@@ -133,11 +133,19 @@ $(".flip").click(function(){
  <script>
     $(document).foundation();
  </script>
-
+<?php 
+function contains($str, array $arr)
+{
+    foreach($arr as $a) {
+        if (stripos($str,$a) !== false) return true;
+    }
+    return false;
+}
+?>
 
 <div id="myModal" class="reveal-modal" data-reveal></div>
 <?php
-		$DB_PASSWORD='f940418';
+		$DB_PASSWORD='1235789zyc';
 		$con = mysql_connect("localhost","root",$DB_PASSWORD);
 		if (!$con)
 		  {
@@ -181,9 +189,24 @@ if(is_null($_GET['search-term']))
 mysql_select_db("fmDB", $con);
 		//ONE FILTER*****************************************************************
 		echo "<div id='portfoliolist'>";
-		$restaurants = mysql_query("SELECT * FROM TAGS,PHOTOS,RESTAURANTS_PHOTOS WHERE CONTENT LIKE '",$_GET['search-term'],"' AND PHOTOS.TAG_ID=TAGS.TAG_ID AND RESTAURANTS_PHOTOS.PHOTO_ID=PHOTOS.PHOTO_ID;");
+		$search_string = $_GET['search-term'];
+		$restaurants = mysql_query("SELECT * FROM TAGS,PHOTOS,RESTAURANTS_PHOTOS WHERE UPPER(CONTENT) LIKE UPPER('%$search_string%') AND PHOTOS.TAG_ID=TAGS.TAG_ID AND RESTAURANTS_PHOTOS.PHOTO_ID=PHOTOS.PHOTO_ID;");
+		$restaurant_pool = array();
 		while($restaurant_IDs = mysql_fetch_array($restaurants)){
-			$i = $restaurant_IDs['RESTAURANT_ID'];
+				$id = $restaurant_IDs['RESTAURANT_ID'];
+				if(!contains($id, $restaurant_pool)){
+					array_push($restaurant_pool,$id);
+				}	
+		}
+		$restaurant_by_location = mysql_query("SELECT * FROM RESTAURANTS WHERE UPPER(LOCATION) LIKE UPPER('%$search_string%');");
+		while($restaurant_IDs = mysql_fetch_array($restaurant_by_location)){
+				$id = $restaurant_IDs['RESTAURANT_ID'];
+				if(!contains($id, $restaurant_pool)){
+					array_push($restaurant_pool, $id);
+				}	
+		}
+		foreach($restaurant_pool as $i){
+			//$i = $restaurant_IDs['RESTAURANT_ID'];
 			$result = mysql_query("SELECT * FROM PHOTOS,RESTAURANTS_PHOTOS WHERE RESTAURANT_ID = $i AND RESTAURANTS_PHOTOS.PHOTO_ID=PHOTOS.PHOTO_ID;")or die (mysql_error());
 			$restaurant_types = mysql_query("SELECT * FROM RESTAURANTS,RESTAURANTS_PREFERENCES,PREFERENCES WHERE RESTAURANTS.RESTAURANT_ID = $i AND RESTAURANTS_PREFERENCES.PREFERENCE_ID = PREFERENCES.PREFERENCE_ID AND RESTAURANTS_PREFERENCES.RESTAURANT_ID = RESTAURANTS.RESTAURANT_ID;");
 			$restaurant = mysql_fetch_array($restaurant_types);
@@ -205,8 +228,10 @@ mysql_select_db("fmDB", $con);
 			echo "</ul>";
 			echo "</div>";
 			echo "</div>";
+			
 			//****************************************************************************
 		}
+		
 		echo "</div>";
                 //*****************************************************************************************
 		mysql_close($con);
