@@ -32,7 +32,7 @@
 		$restaurant_query = mysql_query("SELECT * FROM RESTAURANTS WHERE RESTAURANT_ID = $restaurant_ID;");
 		while($restaurant = mysql_fetch_array($restaurant_query)){
 			echo "<h1>",$restaurant["RESTAURANT_NAME"],"</h1>";
-			echo "<p class='restaurant-location'><a class='restaurant-location' href='findLocation.html'>",$restaurant["LOCATION"],"</a><p>";
+			echo "<p class='restaurant-location'><a class='restaurant-location' href='locationTutorial.php'>",$restaurant["LOCATION"],"</a><p>";
 			echo "<p class='restaurant-trade-time'>",$restaurant["OPENING_HOUR"],"<p>";
 		}
 	?>	
