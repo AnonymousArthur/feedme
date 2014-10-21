@@ -38,7 +38,7 @@
 <div class="location-container">
 <h1>How to find restaurant</h1>
 <div class="location-text">
-<p>The location of restaurant is very clear in this page. If the location belongs to Upper campus, so you should look at it's building code and then find a way to reach there. Here's official <a href="http://www.facilities.unsw.edu.au/sites/all/files/KENC_Campus_Sept14.pdf">Campus Map of UNSW</a>, this may helps you find your way to the restaurant.</p>
+<p class="location-text">The location of restaurant is very clear in this page. If the restaurant is in Upper campus, you should look at the Upper Campus Map and use the building code to find a way to reach there. Here's official <a href="http://www.facilities.unsw.edu.au/sites/all/files/KENC_Campus_Sept14.pdf">Campus Map of UNSW</a>, this may helps you find your way to the restaurant.</p>
 </div>
 <div class="location-upper">
 <table class="location-container">

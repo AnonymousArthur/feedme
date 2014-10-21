@@ -70,3 +70,15 @@ text-align: center;
 .location-img {
 width: 500px;
 }
+.location-text{
+	font-size: 21px;
+	text-shadow:1.5px 1.5px 1.5px rgba(255,255,255,0.5);
+}
+.location-text a{
+	color:rgba(23,183,236,0.84);
+}
+.location-text a:hover{
+	color: rgba(31,161,204,0.92)
+}
+
+
