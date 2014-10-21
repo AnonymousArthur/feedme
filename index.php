@@ -82,13 +82,17 @@ $(".flip").click(function(){
   <section class="top-bar-section"> <!-- Right Nav Section --> 
     <ul class="right"> 
       <li class="has-form">
-      <div class="row collapse">	
-     <div class="large-8 small-9 columns">
-      <input name="search-term" type="text" placeholder="Enter Keyword">
-       </div>
-       <div class="large-4 small-3 columns">
-         <a href="#" class=" filter alert button expand" data-filter=search-term>Search</a>
-       </div>  
+      <div class="row collapse">
+<!-- Seach button-->
+     <form method="get" action="index.php"> 
+     		<div class="large-8 small-9 columns">
+      		<input name="search-term" type="text" placeholder="What would you like">
+       		</div>
+       		<div class="large-4 small-3 columns">
+         	<input type="submit"  class="alert button expand" placeholder="Feed me">
+       		</div>
+       </form>  
+<!-- ------------>
    </div>
      </li>
     </ul>  
@@ -101,16 +105,14 @@ $(".flip").click(function(){
 <div class="flip" align="center">
 <button class="button" >Feed Me Now</button>
 </div>
-
 <div class="container">
 
 	<ul id="filters" class="clearfix">
-  <li><span class="filter active" data-filter="Chinese_Food Italian_Food Japanese_Food American_Food Indian_Food Malaysian_Food Desserts Vegetarian Miscellaneous Drinks Turkish_Food Fast_Food Coffee_shop Mediterranean_Food">All</span></li>
+  <a href="index.php"><li><span class="filter active" data-filter="Asian_Food Mexican_Food Indian_Food Malaysian_Food Desserts Vegetarian Miscellaneous Drinks Turkish_Food Fast_Food Coffee_shop Mediterranean_Food Cuban_Food Vietnamese_Food">All</span></li></a>
   <!--<li><a href="#"><span class="filter" data-filter="Chinese_Food">Chinese Food</span></a></li>-->
-  <li><a href="#"><span class="filter" data-filter="Italian_Food">Italian Food</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="Mexican_Food">Mexican Food</span></a></li>
   <li><a href="#"><span class="filter" data-filter="Asian_Food">Asian Food</span></a></li>
-  <li><a href="#"><span class="filter" data-filter="Japanese_Food">Japanese Food</span></a></li>
-  <li><a href="#"><span class="filter" data-filter="American_Food">American Food</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="Cuban_Food">Cuban Food</span></a></li>
   <li><a href="#"><span class="filter" data-filter="Indian_Food">Indian Food</span></a></li>
   <li><a href="#"><span class="filter" data-filter="Malaysian_Food">Malaysian Food</span></a></li>
   <li><a href="#"><span class="filter" data-filter="Desserts">Desserts</span></a></li>
@@ -121,6 +123,8 @@ $(".flip").click(function(){
   <li><a href="#"><span class="filter" data-filter="Fast_Food">Fast Food</span></a></li>
   <li><a href="#"><span class="filter" data-filter="Coffee_shop">Coffee shop</span></a></li>
   <li><a href="#"><span class="filter" data-filter="Mediterranean_Food">Mediterranean Food</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="Vietnamese_Food">Vietnamese Food</span></a></li>
+
 
 	</ul>
  </script>
@@ -139,6 +143,8 @@ $(".flip").click(function(){
 		  {
 		  die('Could not connect: ' . mysql_error());
 		  }
+if(is_null($_GET['search-term']))
+{
 		mysql_select_db("fmDB", $con);
 		//ONE FILTER*****************************************************************
 		echo "<div id='portfoliolist'>";
@@ -171,6 +177,40 @@ $(".flip").click(function(){
 		echo "</div>";
                 //*****************************************************************************************
 		mysql_close($con);
+}else{
+mysql_select_db("fmDB", $con);
+		//ONE FILTER*****************************************************************
+		echo "<div id='portfoliolist'>";
+		$restaurants = mysql_query("SELECT * FROM TAGS,PHOTOS,RESTAURANTS_PHOTOS WHERE CONTENT LIKE '",$_GET['search-term'],"' AND PHOTOS.TAG_ID=TAGS.TAG_ID AND RESTAURANTS_PHOTOS.PHOTO_ID=PHOTOS.PHOTO_ID;");
+		while($restaurant_IDs = mysql_fetch_array($restaurants)){
+			$i = $restaurant_IDs['RESTAURANT_ID'];
+			$result = mysql_query("SELECT * FROM PHOTOS,RESTAURANTS_PHOTOS WHERE RESTAURANT_ID = $i AND RESTAURANTS_PHOTOS.PHOTO_ID=PHOTOS.PHOTO_ID;")or die (mysql_error());
+			$restaurant_types = mysql_query("SELECT * FROM RESTAURANTS,RESTAURANTS_PREFERENCES,PREFERENCES WHERE RESTAURANTS.RESTAURANT_ID = $i AND RESTAURANTS_PREFERENCES.PREFERENCE_ID = PREFERENCES.PREFERENCE_ID AND RESTAURANTS_PREFERENCES.RESTAURANT_ID = RESTAURANTS.RESTAURANT_ID;");
+			$restaurant = mysql_fetch_array($restaurant_types);
+				//echo $restaurant['PREFERENCE'];
+			$newphrase = str_replace(" ", "_", $restaurant['PREFERENCE']);
+			///one block********************************************************************
+			echo "<div class='portfolio ",$newphrase,"' data-cat = \"",$newphrase,"\">";
+			echo "<div class='portfolio-wrapper'>";
+			echo "<ul class='tester' data-orbit>";
+			while($row = mysql_fetch_array($result)){
+				echo "<li><a  href='restaurant.php?restaurant=$i' data-reveal-id='myModal' data-reveal-ajax='true'><img src='",$row['URL'],"' alt=''/></a>";
+				echo "<div class='label'>";
+				echo "<div class='label-text'><span class='text-title'>",$restaurant['RESTAURANT_NAME'],"</span></div>";
+				echo "<div class='label-bg'></div></div></li>";
+
+		  	//echo $row['URL'] . " " . $row['INFORMATION'];
+			//echo "***********";
+			}
+			echo "</ul>";
+			echo "</div>";
+			echo "</div>";
+			//****************************************************************************
+		}
+		echo "</div>";
+                //*****************************************************************************************
+		mysql_close($con);
+}
 	?>
 
   <script>
