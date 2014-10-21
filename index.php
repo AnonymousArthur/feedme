@@ -9,6 +9,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/js/vendor/jquery.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/js/foundation.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/js/foundation/foundation.reveal.js"></script>
+<script src="masonry.pkgd.min.js"></script>
 <script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
 <script type="text/javascript" src="js/jquery.easing.min.js"></script>
 <script type="text/javascript" src="js/functions.js"></script>
@@ -127,7 +128,7 @@ $(".flip").click(function(){
 		//ONE FILTER*****************************************************************
 		echo "<div id='portfoliolist'>";
 		while($i<=14){
-			$result = mysql_query("SELECT * FROM PHOTOS,RESTAURANTS_PHOTOS WHERE RESTAURANT_ID = $i AND 				RESTAURANTS_PHOTOS.PHOTO_ID=PHOTOS.PHOTO_ID;");
+			$result = mysql_query("SELECT * FROM PHOTOS,RESTAURANTS_PHOTOS WHERE RESTAURANT_ID = $i AND RESTAURANTS_PHOTOS.PHOTO_ID=PHOTOS.PHOTO_ID;")or die (mysql_error());
 			$restaurant_types = mysql_query("SELECT * FROM RESTAURANTS,RESTAURANTS_PREFERENCES,PREFERENCES WHERE RESTAURANTS.RESTAURANT_ID = $i AND RESTAURANTS_PREFERENCES.PREFERENCE_ID = PREFERENCES.PREFERENCE_ID AND RESTAURANTS_PREFERENCES.RESTAURANT_ID = RESTAURANTS.RESTAURANT_ID;");
 			$restaurant = mysql_fetch_array($restaurant_types);
 				//echo $restaurant['PREFERENCE'];
@@ -155,6 +156,7 @@ $(".flip").click(function(){
                 //*****************************************************************************************
 		mysql_close($con);
 	?>
+
   <script>
     $(document).foundation({
     	orbit: {
