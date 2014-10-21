@@ -87,7 +87,7 @@ $(".flip").click(function(){
       <input name="search-term" type="text" placeholder="Enter Keyword">
        </div>
        <div class="large-4 small-3 columns">
-         <a href="#" class="filter alert button expand" type="submit" data-filter="search-term">Search</a>
+         <a href="#" class=" filter alert button expand" data-filter=search-term>Search</a>
        </div>  
    </div>
      </li>
@@ -106,8 +106,9 @@ $(".flip").click(function(){
 
 	<ul id="filters" class="clearfix">
   <li><span class="filter active" data-filter="Chinese_Food Italian_Food Japanese_Food American_Food Indian_Food Malaysian_Food Desserts Vegetarian Miscellaneous Drinks Turkish_Food Fast_Food Coffee_shop Mediterranean_Food">All</span></li>
-  <li><a href="#"><span class="filter" data-filter="Chinese_Food">Chinese Food</span></a></li>
+  <!--<li><a href="#"><span class="filter" data-filter="Chinese_Food">Chinese Food</span></a></li>-->
   <li><a href="#"><span class="filter" data-filter="Italian_Food">Italian Food</span></a></li>
+  <li><a href="#"><span class="filter" data-filter="Asian_Food">Asian Food</span></a></li>
   <li><a href="#"><span class="filter" data-filter="Japanese_Food">Japanese Food</span></a></li>
   <li><a href="#"><span class="filter" data-filter="American_Food">American Food</span></a></li>
   <li><a href="#"><span class="filter" data-filter="Indian_Food">Indian Food</span></a></li>
@@ -132,23 +133,19 @@ $(".flip").click(function(){
 
 <div id="myModal" class="reveal-modal" data-reveal></div>
 <?php
-		$DB_PASSWORD='1235789zyc';
+		$DB_PASSWORD='f940418';
 		$con = mysql_connect("localhost","root",$DB_PASSWORD);
 		if (!$con)
 		  {
 		  die('Could not connect: ' . mysql_error());
 		  }
-		$i = 1;
 		mysql_select_db("fmDB", $con);
 		//ONE FILTER*****************************************************************
 		echo "<div id='portfoliolist'>";
-		while($i<=14){
+		$restaurants = mysql_query("SELECT * FROM RESTAURANTS;");
+		while($restaurant_IDs = mysql_fetch_array($restaurants)){
+			$i = $restaurant_IDs['RESTAURANT_ID'];
 			$result = mysql_query("SELECT * FROM PHOTOS,RESTAURANTS_PHOTOS WHERE RESTAURANT_ID = $i AND RESTAURANTS_PHOTOS.PHOTO_ID=PHOTOS.PHOTO_ID;")or die (mysql_error());
-			if( isset($_GET['submit']) ){
-    			$val1 = htmlentities($_GET['search-term']);
-    			$result = mysql_query("SELECT * FROM PHOTOS,RESTAURANTS_PHOTOS WHERE RESTAURANT_ID = $i AND RESTAURANTS_PHOTOS.PHOTO_ID LIKE $val1;")or die (mysql_error());
-    			echo "<h2>",$val1,"</h2>";
-    		}	
 			$restaurant_types = mysql_query("SELECT * FROM RESTAURANTS,RESTAURANTS_PREFERENCES,PREFERENCES WHERE RESTAURANTS.RESTAURANT_ID = $i AND RESTAURANTS_PREFERENCES.PREFERENCE_ID = PREFERENCES.PREFERENCE_ID AND RESTAURANTS_PREFERENCES.RESTAURANT_ID = RESTAURANTS.RESTAURANT_ID;");
 			$restaurant = mysql_fetch_array($restaurant_types);
 				//echo $restaurant['PREFERENCE'];
@@ -158,7 +155,7 @@ $(".flip").click(function(){
 			echo "<div class='portfolio-wrapper'>";
 			echo "<ul class='tester' data-orbit>";
 			while($row = mysql_fetch_array($result)){
-				echo "<li><a  href='restaurant.php?restaurant=$i' data-reveal-id='myModal' data-reveal-ajax='true'><img src='",$row['URL'],"' alt='' height=\"300\" width=\"400\"/></a>";
+				echo "<li><a  href='restaurant.php?restaurant=$i' data-reveal-id='myModal' data-reveal-ajax='true'><img src='",$row['URL'],"' alt=''/></a>";
 				echo "<div class='label'>";
 				echo "<div class='label-text'><span class='text-title'>",$restaurant['RESTAURANT_NAME'],"</span></div>";
 				echo "<div class='label-bg'></div></div></li>";
@@ -170,7 +167,6 @@ $(".flip").click(function(){
 			echo "</div>";
 			echo "</div>";
 			//****************************************************************************
-			$i = $i+1;
 		}
 		echo "</div>";
                 //*****************************************************************************************
