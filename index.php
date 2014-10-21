@@ -82,7 +82,7 @@ $(".flip").click(function(){
 </nav>
 
 <div class="panel" align="center">
-<img src="img/food_header.jpg">
+<img src="patrick.png">
 </div>
 <div class="flip" align="center">
 <button class="button" >Feed Me Now</button>
@@ -106,6 +106,7 @@ $(".flip").click(function(){
   <li><a href="#"><span class="filter" data-filter="Fast_Food">Fast Food</span></a></li>
   <li><a href="#"><span class="filter" data-filter="Coffee_shop">Coffee shop</span></a></li>
   <li><a href="#"><span class="filter" data-filter="Mediterranean_Food">Mediterranean Food</span></a></li>
+
 	</ul>
  </script>
 </div>
