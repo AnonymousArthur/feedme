@@ -57,3 +57,16 @@ h1, h2, h3 .gallery {
 .restaurant-location{
 	color:#008cba;
 }
+.location-body {
+background-image: url(location-bg.jpg);
+background-repeat: no-repeat;
+background-attachment: fixed;
+}
+.location-container {
+width: 70%;
+margin: 0px auto;
+text-align: center;
+}
+.location-img {
+width: 500px;
+}
