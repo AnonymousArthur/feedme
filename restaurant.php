@@ -12,7 +12,7 @@
 <body>
 <?php
 	$restaurant_ID = $_GET['restaurant'];
-	$photo_ID = $GET['photo'];
+	$photo_ID = $_GET['photo'];
 	
 	$DB_PASSWORD='1235789zyc';
 	$con = mysql_connect("localhost","root",$DB_PASSWORD);

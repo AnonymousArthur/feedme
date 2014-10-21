@@ -87,7 +87,7 @@ $(".flip").click(function(){
       <input name="search-term" type="text" placeholder="Enter Keyword">
        </div>
        <div class="large-4 small-3 columns">
-         <a href="#" class=" filter alert button expand" data-filter=search-term>Search</a>
+         <a href="#" class="filter alert button expand" type="submit" data-filter="search-term">Search</a>
        </div>  
    </div>
      </li>
@@ -133,7 +133,7 @@ $(".flip").click(function(){
 <div id="myModal" class="reveal-modal" data-reveal></div>
 <?php
 		$DB_PASSWORD='1235789zyc';
-		$con = mysql_connect("localhost","root",$DB_PASSWORD;
+		$con = mysql_connect("localhost","root",$DB_PASSWORD);
 		if (!$con)
 		  {
 		  die('Could not connect: ' . mysql_error());
@@ -144,6 +144,11 @@ $(".flip").click(function(){
 		echo "<div id='portfoliolist'>";
 		while($i<=14){
 			$result = mysql_query("SELECT * FROM PHOTOS,RESTAURANTS_PHOTOS WHERE RESTAURANT_ID = $i AND RESTAURANTS_PHOTOS.PHOTO_ID=PHOTOS.PHOTO_ID;")or die (mysql_error());
+			if( isset($_GET['submit']) ){
+    			$val1 = htmlentities($_GET['search-term']);
+    			$result = mysql_query("SELECT * FROM PHOTOS,RESTAURANTS_PHOTOS WHERE RESTAURANT_ID = $i AND RESTAURANTS_PHOTOS.PHOTO_ID LIKE $val1;")or die (mysql_error());
+    			echo "<h2>",$val1,"</h2>";
+    		}	
 			$restaurant_types = mysql_query("SELECT * FROM RESTAURANTS,RESTAURANTS_PREFERENCES,PREFERENCES WHERE RESTAURANTS.RESTAURANT_ID = $i AND RESTAURANTS_PREFERENCES.PREFERENCE_ID = PREFERENCES.PREFERENCE_ID AND RESTAURANTS_PREFERENCES.RESTAURANT_ID = RESTAURANTS.RESTAURANT_ID;");
 			$restaurant = mysql_fetch_array($restaurant_types);
 				//echo $restaurant['PREFERENCE'];
