@@ -1,3 +1,3 @@
-Feedme.com - feedme.site40.net
+Feedme.com - deprecated
 ==============================
 Feed yourself in UNSW
